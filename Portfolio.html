@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K.M.N.M.R.S.R. Thilakarathna — Portfolio</title>
+<meta name="description" content="Professional portfolio of K.N.M.R.S.R. Thilakarathna, BICT student at University of Vavuniya.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0E14;
+    --surface:#121821;
+    --surface-2:#161D28;
+    --border:#212B38;
+    --text:#E8EDF2;
+    --muted:#8A97A8;
+    --accent:#4ADE80;
+    --accent-dim:#2f8f5c;
+    --amber:#FBBF24;
+    --mono:'IBM Plex Mono', monospace;
+    --sans:'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  ::selection{background:var(--accent);color:#0A0E14;}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(10,14,20,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;max-width:1080px;margin:0 auto;
+  }
+  .logo{
+    font-family:var(--mono);font-weight:600;font-size:15px;color:var(--accent);
+    display:flex;align-items:center;gap:8px;
+  }
+  .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 8px var(--accent);}
+  nav.links{display:flex;gap:28px;font-family:var(--mono);font-size:13px;}
+  nav.links a{color:var(--muted);transition:color .2s;position:relative;}
+  nav.links a:hover, nav.links a.active{color:var(--accent);}
+  .menu-toggle{display:none;background:none;border:1px solid var(--border);color:var(--text);
+    width:38px;height:38px;border-radius:6px;font-family:var(--mono);cursor:pointer;}
+
+  @media (max-width:760px){
+    nav.links{
+      position:fixed;top:64px;left:0;right:0;bottom:0;
+      background:var(--bg);flex-direction:column;padding:32px 24px;gap:0;
+      transform:translateX(100%);transition:transform .25s ease;
+    }
+    nav.links.open{transform:translateX(0);}
+    nav.links a{padding:16px 0;border-bottom:1px solid var(--border);font-size:16px;}
+    .menu-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:120px 0 80px;position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;
+    background:radial-gradient(circle, rgba(74,222,128,0.08), transparent 70%);
+    pointer-events:none;
+  }
+  .terminal{
+    background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    max-width:640px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);
+  }
+  .terminal-bar{
+    display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid var(--border);
+    background:var(--surface-2);
+  }
+  .terminal-bar span{width:11px;height:11px;border-radius:50%;background:#30363d;}
+  .terminal-body{padding:20px 22px;font-family:var(--mono);font-size:14px;min-height:150px;}
+  .terminal-body .line{color:var(--muted);margin-bottom:6px;}
+  .terminal-body .prompt{color:var(--accent);}
+  .terminal-body .out{color:var(--text);}
+  .terminal-body .cursor{display:inline-block;width:8px;height:16px;background:var(--accent);
+    animation:blink 1s step-end infinite;vertical-align:text-bottom;margin-left:2px;}
+  @keyframes blink{50%{opacity:0;}}
+
+  .hero h1{
+    font-size:clamp(28px,5vw,42px);font-weight:800;margin:28px 0 8px;letter-spacing:-0.5px;
+  }
+  .hero .role{
+    font-family:var(--mono);color:var(--accent);font-size:15px;margin-bottom:16px;
+  }
+  .hero p.lede{color:var(--muted);max-width:560px;font-size:16px;margin-bottom:28px;}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono);font-size:13px;padding:12px 22px;border-radius:6px;
+    border:1px solid var(--border);transition:all .2s;
+  }
+  .btn.primary{background:var(--accent);color:#06170D;border-color:var(--accent);font-weight:600;}
+  .btn.primary:hover{background:#5eeb95;}
+  .btn.ghost{color:var(--text);}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:72px 0;border-bottom:1px solid var(--border);}
+  .section-tag{
+    font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:1.5px;
+    text-transform:uppercase;margin-bottom:10px;
+  }
+  .section-tag::before{content:'// ';color:var(--muted);}
+  h2{font-size:clamp(22px,3.5vw,30px);font-weight:800;margin-bottom:32px;letter-spacing:-0.5px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;}}
+  .about-grid p{color:var(--muted);margin-bottom:16px;}
+  .facts{display:grid;gap:14px;}
+  .fact{
+    background:var(--surface);border:1px solid var(--border);border-radius:8px;
+    padding:14px 18px;display:flex;justify-content:space-between;font-size:14px;
+  }
+  .fact span:first-child{color:var(--muted);font-family:var(--mono);font-size:12px;}
+  .fact span:last-child{font-weight:600;}
+
+  /* ---------- EDUCATION ---------- */
+  .edu-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    padding:28px;display:flex;gap:20px;align-items:flex-start;
+  }
+  .edu-icon{
+    width:44px;height:44px;border-radius:8px;background:rgba(74,222,128,0.12);
+    color:var(--accent);display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-weight:700;flex-shrink:0;
+  }
+  .edu-card h3{font-size:18px;margin-bottom:4px;}
+  .edu-card .meta{color:var(--accent);font-family:var(--mono);font-size:13px;margin-bottom:10px;}
+  .edu-card ul{margin-top:12px;padding-left:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;}
+  .edu-card ul li{color:var(--muted);font-size:13px;position:relative;padding-left:16px;}
+  .edu-card ul li::before{content:'▸';color:var(--accent);position:absolute;left:0;}
+  @media(max-width:600px){.edu-card ul{grid-template-columns:1fr;}}
+
+  /* ---------- SKILLS ---------- */
+  .skills-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  @media(max-width:760px){.skills-cols{grid-template-columns:1fr;}}
+  .skills-cols h4{font-family:var(--mono);font-size:13px;color:var(--muted);
+    text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;}
+  .tag-cloud{display:flex;flex-wrap:wrap;gap:10px;}
+  .tag{
+    font-family:var(--mono);font-size:13px;padding:8px 14px;border-radius:6px;
+    border:1px solid var(--border);background:var(--surface);color:var(--text);
+  }
+  .tag.strong{border-color:var(--accent-dim);color:var(--accent);}
+
+  /* ---------- PROJECTS ---------- */
+  .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:900px){.projects-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:600px){.projects-grid{grid-template-columns:1fr;}}
+  .project-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    overflow:hidden;display:flex;flex-direction:column;transition:transform .2s, border-color .2s;
+  }
+  .project-card:hover{transform:translateY(-4px);border-color:var(--accent-dim);}
+  .project-thumb{
+    height:140px;background:linear-gradient(135deg,var(--surface-2),var(--surface));
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);color:var(--border);font-size:12px;border-bottom:1px solid var(--border);
+  }
+  .project-body{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1;}
+  .project-body h3{font-size:16px;}
+  .project-body p{color:var(--muted);font-size:13.5px;flex:1;}
+  .project-tools{display:flex;flex-wrap:wrap;gap:6px;}
+  .project-tools span{
+    font-family:var(--mono);font-size:11px;color:var(--muted);
+    border:1px solid var(--border);padding:3px 8px;border-radius:4px;
+  }
+  .project-links{display:flex;gap:14px;font-family:var(--mono);font-size:12.5px;margin-top:4px;}
+  .project-links a{color:var(--accent);}
+  .project-links a:hover{text-decoration:underline;}
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline{border-left:2px solid var(--border);padding-left:28px;display:grid;gap:32px;}
+  .tl-item{position:relative;}
+  .tl-item::before{
+    content:'';position:absolute;left:-33.5px;top:4px;width:10px;height:10px;border-radius:50%;
+    background:var(--accent);box-shadow:0 0 0 4px var(--bg);
+  }
+  .tl-item .date{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:4px;}
+  .tl-item h3{font-size:16px;margin-bottom:4px;}
+  .tl-item .org{color:var(--muted);font-size:13px;margin-bottom:8px;font-style:italic;}
+  .tl-item p{color:var(--muted);font-size:14px;}
+
+  /* ---------- CV ---------- */
+  .cv-box{
+    background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    padding:36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;
+  }
+  .cv-box .cv-info h3{font-size:18px;margin-bottom:6px;}
+  .cv-box .cv-info p{color:var(--muted);font-size:14px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  @media(max-width:760px){.contact-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    padding:22px;text-align:center;transition:border-color .2s, transform .2s;
+  }
+  .contact-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .contact-card .ic{font-family:var(--mono);color:var(--accent);font-size:22px;margin-bottom:10px;}
+  .contact-card .label{font-size:13px;color:var(--muted);margin-bottom:2px;}
+  .contact-card .value{font-size:13.5px;font-weight:600;word-break:break-word;}
+
+  footer{padding:36px 0;text-align:center;color:var(--muted);font-family:var(--mono);font-size:12.5px;}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{transition:none;opacity:1;transform:none;}
+    .cursor{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="logo"><span class="dot"></span>K.M.N.M.R.S.R. Thilakarathna</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <nav class="links" id="navLinks">
+      <a href="#home">home</a>
+      <a href="#about">about</a>
+      <a href="#education">education</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#experience">experience</a>
+      <a href="#cv">cv</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HOME ================= -->
+<section class="hero" id="home" style="border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="terminal reveal">
+      <div class="terminal-bar"><span></span><span></span><span></span></div>
+      <div class="terminal-body" id="typedBody">
+        <div class="line"><span class="prompt">$</span> whoami</div>
+      </div>
+    </div>
+    <h1>K.M.N.M.R.S.R. Thilakarathna</h1>
+    <div class="role">BICT Undergraduate — Information &amp; Communication Technology</div>
+    <p class="lede">Final-year Information and Communication Technology student at the University of Vavuniya,
+      focused on web development and practical system design. I like building things that are useful,
+      well-tested, and easy for real people to use — and this site is one of them.</p>
+    <div class="btn-row">
+      <a href="#projects" class="btn primary">View Projects</a>
+      <a href="#cv" class="btn ghost">Download CV</a>
+      <a href="#contact" class="btn ghost">Contact Me</a>
+    </div>
+  </div>
+</section>
+
