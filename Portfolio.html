@@ -426,4 +426,167 @@
     </div>
   </div>
 </section>
+!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="container">
+    <div class="section-tag">05 · experience &amp; activities</div>
+    <h2>Experience &amp; Activities</h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="date">2024 — Present</div>
+        <h3>ICT Student Association Member</h3>
+        <div class="org">University of Vavuniya</div>
+        <p>Participated in departmental tech events and workshops, contributing to peer learning
+          activities in web development and software design.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="date">2023</div>
+        <h3>Add your internship / volunteering / competition here</h3>
+        <div class="org">Organisation name</div>
+        <p>One or two sentences on what you did and the impact or skills gained.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CV ================= -->
+<section id="cv">
+  <div class="container">
+    <div class="section-tag">06 · cv</div>
+    <h2>Curriculum Vitae</h2>
+    <div class="cv-box reveal">
+      <div class="cv-info">
+        <h3>Download my full CV</h3>
+        <p>Updated PDF — includes education, skills, projects and references.</p>
+      </div>
+      <a href="assets/CV_Thilakarathna.pdf" class="btn primary" download>Download PDF ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" style="border-bottom:none;">
+  <div class="container">
+    <div class="section-tag">07 · contact</div>
+    <h2>Get In Touch</h2>
+    <div class="contact-grid">
+      <a class="contact-card reveal" href="mailto:shenalthilakarathana2003@gmail.com">
+        <div class="ic">@</div>
+        <div class="label">Email</div>
+        <div class="value">shenalthilakarathana2003@gmail.com</div>
+      </a>
+      <a class="contact-card reveal" href="tel:+94762559939">
+        <div class="ic">☎</div>
+        <div class="label">Phone</div>
+        <div class="value">+94 76 255 9939</div>
+      </a>
+      <a class="contact-card reveal" href="https://www.linkedin.com/in/shenal-thilakarathne-9539a7343" target="_blank" rel="noopener">
+        <div class="ic">in</div>
+        <div class="label">LinkedIn</div>
+        <div class="value">shenal-thilakarathne</div>
+      </a>
+      <a class="contact-card reveal" href="https://github.com/shenalthilakarathana2003-eng/Softs" target="_blank" rel="noopener">
+        <div class="ic">&lt;/&gt;</div>
+        <div class="label">GitHub</div>
+        <div class="value">shenalthilakarathana2003-eng</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> K.N.M.R.S.R. Thilakarathna — Built with HTML, CSS &amp; JavaScript.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // mobile menu
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+    const expanded = links.classList.contains('open');
+    toggle.setAttribute('aria-expanded', expanded);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // active link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navA = document.querySelectorAll('nav.links a');
+  const setActive = () => {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 90;
+      if (window.scrollY >= top) current = sec.getAttribute('id');
+    });
+    navA.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  };
+  window.addEventListener('scroll', setActive);
+  setActive();
+
+  // reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // terminal typing effect
+  const lines = [
+    { p: 'whoami', o: 'K.N.M.R.S.R. Thilakarathna' },
+    { p: 'cat role.txt', o: 'BICT Undergraduate · University of Vavuniya' },
+    { p: 'cat focus.txt', o: 'Web Development · System Analysis & Design' },
+  ];
+  const body = document.getElementById('typedBody');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function typeLine(idx) {
+    if (idx >= lines.length) return;
+    const { p, o } = lines[idx];
+    const promptLine = document.createElement('div');
+    promptLine.className = 'line';
+    const promptSpan = document.createElement('span');
+    promptSpan.className = 'prompt';
+    promptSpan.textContent = '$ ';
+    promptLine.appendChild(promptSpan);
+    const typedSpan = document.createElement('span');
+    typedSpan.className = 'out';
+    promptLine.appendChild(typedSpan);
+    if (idx === 0) body.innerHTML = '';
+    body.appendChild(promptLine);
+
+    if (prefersReduced) {
+      typedSpan.textContent = p;
+      const outLine = document.createElement('div');
+      outLine.className = 'line out';
+      outLine.textContent = o;
+      body.appendChild(outLine);
+      typeLine(idx + 1);
+      return;
+    }
+
+    let i = 0;
+    const iv = setInterval(() => {
+      typedSpan.textContent = p.slice(0, i + 1);
+      i++;
+      if (i === p.length) {
+        clearInterval(iv);
+        setTimeout(() => {
+          const outLine = document.createElement('div');
+          outLine.className = 'line out';
+          outLine.textContent = o;
+          body.appendChild(outLine);
+          setTimeout(() => typeLine(idx + 1), 350);
+        }, 200);
+      }
+    }, 45);
+  }
+  typeLine(0);
+</script>
+
+</body>
+</html>
 
